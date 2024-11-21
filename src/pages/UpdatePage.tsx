@@ -107,9 +107,9 @@ export const UpdatePage = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            const payload = {
+            const payload: any = {
                 idType: userData.idType.label,
-                idNumber: userData.idNumber,
+                idNumber: userData.idNumber, // Esto es el id actual del usuario
                 firstName: userData.firstName,
                 middleName: userData.middleName,
                 lastName: userData.lastName,
@@ -119,9 +119,14 @@ export const UpdatePage = () => {
                 phone: userData.phone,
                 photo: userData.photo,
             };
-
+    
+            // Si el número de identificación cambia, incluye `newIdNumber`
+            if (id !== userData.idNumber) {
+                payload.newIdNumber = userData.idNumber;
+            }
+    
             const response = await axios.put(`http://localhost:3000/api/update/${id}`, payload);
-
+    
             if (response.status === 200) {
                 toast.success("User updated successfully!", {
                     description: "The user information has been updated successfully.",
@@ -130,17 +135,17 @@ export const UpdatePage = () => {
             setShowCards(false);
         } catch (error: any) {
             if (error.response && error.response.status === 409) {
-                toast.error("Uh Oh! Something went wrong!", {
+                toast.error("Duplicate ID!", {
                     description: "The identification number provided exists for another user.",
                 });
             } else {
-                toast.error('Uh Oh! Something went wrong!', {
+                toast.error("Uh Oh! Something went wrong!", {
                     description: error.message,
                 });
             }
         }
     };
-
+    
     return (
         <>
 
