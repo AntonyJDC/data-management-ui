@@ -9,7 +9,7 @@ import Select, {
 import { components } from 'react-select';
 import { MdClose } from 'react-icons/md';
 import { Controller } from 'react-hook-form';
-import { cn } from '@/utils/utils';
+import { cn } from '../../utils/utils';
 import { ErrorMessageAdapter } from './error-message-adapter';
 import { FixedSizeList } from 'react-window';
 import {

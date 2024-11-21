@@ -40,7 +40,7 @@ import {
 } from '@dnd-kit/sortable';
 
 import { Item, List, Wrapper } from '.';
-import { FileWithIdProps } from '@/presentation/components/rhf/dropzone';
+import { FileWithIdProps } from '../../rhf/dropzone';
 import { LucideImagePlus } from 'lucide-react';
 
 export interface Props {

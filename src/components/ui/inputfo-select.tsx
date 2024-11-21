@@ -6,7 +6,7 @@ import Select, {
 } from 'react-select';
 import { components } from 'react-select';
 import { MdClose } from 'react-icons/md';
-import { cn } from '@/utils/utils';
+import { cn } from '../../utils/utils';
 
 // focus:ring-1 focus:placeholder:opacity-100 focus:outline-none focus:border-base-content focus:ring-base-content
 

@@ -1,7 +1,7 @@
 import React, { forwardRef, CSSProperties } from 'react';
 
 import styles from './Action.module.css';
-import { cn } from '@/utils/utils';
+import { cn } from '../../../../../../../utils/utils';
 
 export interface Props extends React.HTMLAttributes<HTMLButtonElement> {
   active?: {

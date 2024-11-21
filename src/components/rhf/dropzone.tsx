@@ -10,7 +10,7 @@ import {
   rectSortingStrategy,
 } from '@dnd-kit/sortable';
 import { MeasuringStrategy } from '@dnd-kit/core';
-import { cn } from '@/utils/utils';
+import { cn } from '../../utils/utils';
 import { ErrorMessageAdapter } from './error-message-adapter';
 import { toast } from 'sonner';
 

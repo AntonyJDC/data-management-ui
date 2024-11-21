@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 
-import { cn } from '@/utils/utils';
+import { cn } from '../../../../../utils/utils';
 
 export interface Props {
   children: React.ReactNode;
