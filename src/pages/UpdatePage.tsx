@@ -10,6 +10,8 @@ import { toast } from "sonner";
 import axios from "axios";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "../components/ui/card";
 import { Helmet } from "react-helmet";
+import Swal from "sweetalert2";
+import { iconSvgWarning, templateWarning } from "../components/ModalTemplate";
 
 let id: string;
 
@@ -107,46 +109,64 @@ export const UpdatePage = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        try {
-            const payload: any = {
-                idType: userData.idType.label,
-                idNumber: userData.idNumber, // Esto es el id actual del usuario
-                firstName: userData.firstName,
-                middleName: userData.middleName,
-                lastName: userData.lastName,
-                birthDate: userData.birthDate,
-                gender: userData.gender.label,
-                email: userData.email,
-                phone: userData.phone,
-                photo: userData.photo,
-            };
-    
-            // Si el número de identificación cambia, incluye `newIdNumber`
-            if (id !== userData.idNumber) {
-                payload.newIdNumber = userData.idNumber;
-            }
-    
-            const response = await axios.put(`http://localhost:3000/api/update/${id}`, payload);
-    
-            if (response.status === 200) {
-                toast.success("User updated successfully!", {
-                    description: "The user information has been updated successfully.",
+        Swal.fire({
+            buttonsStyling: false,
+            iconHtml: iconSvgWarning,
+            title: 'Confirmation Required',
+            text: 'Are you sure you want to update this user?',
+            customClass: templateWarning,
+            showCancelButton: true,
+            confirmButtonText: 'Yes, update it',
+            cancelButtonText: 'No, keep it',
+            reverseButtons: false,
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const payload: any = {
+                        idType: userData.idType.label,
+                        idNumber: userData.idNumber,
+                        firstName: userData.firstName,
+                        middleName: userData.middleName,
+                        lastName: userData.lastName,
+                        birthDate: userData.birthDate,
+                        gender: userData.gender.label,
+                        email: userData.email,
+                        phone: userData.phone,
+                        photo: userData.photo,
+                    };
+
+                    // Incluir `newIdNumber` solo si ha cambiado
+                    if (id !== userData.idNumber) {
+                        payload.newIdNumber = userData.idNumber;
+                    }
+
+                    const response = await axios.put(`http://localhost:3004/api/update/${id}`, payload);
+
+                    if (response.status === 200) {
+                        toast.success('User updated successfully!', {
+                            description: 'The user information has been updated successfully.',
+                        });
+                        setShowCards(false); // Ocultar los datos después de actualizar
+                    }
+                } catch (error: any) {
+                    if (error.response && error.response.status === 409) {
+                        toast.error('Duplicate ID!', {
+                            description: 'The identification number provided exists for another user.',
+                        });
+                    } else {
+                        toast.error('Something went wrong!', {
+                            description: error.message,
+                        });
+                    }
+                }
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                toast.info('Update canceled', {
+                    icon: '😊',
                 });
             }
-            setShowCards(false);
-        } catch (error: any) {
-            if (error.response && error.response.status === 409) {
-                toast.error("Duplicate ID!", {
-                    description: "The identification number provided exists for another user.",
-                });
-            } else {
-                toast.error("Uh Oh! Something went wrong!", {
-                    description: error.message,
-                });
-            }
-        }
+        });
     };
-    
+
     return (
         <>
             <Helmet>
