@@ -2,7 +2,7 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { DashboardLayout } from '../layout/DashboardLayout';
 import { ErrorPage } from '../presentation/ErrorPage';
 import { NotFoundPage } from '../presentation/NotFoundPage';
-import { CreatePage, HomePage, ReadPage, UpdatePage } from '../pages/index';
+import { CreatePage, DeletePage, HomePage, LogsPage, ReadPage, UpdatePage } from '../pages/index';
 
 export const router = createBrowserRouter([
   {
@@ -28,13 +28,16 @@ export const router = createBrowserRouter([
       },
       {
         path: 'delete',
-        element: <h1>Delete page</h1>,
+        element: <DeletePage/>,
       },
       {
         path: 'read',
         element: <ReadPage/>,
       },
-      
+      {
+        path: 'logs',
+        element: <LogsPage/>,
+      },
     ],
   },
   {
