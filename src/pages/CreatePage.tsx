@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import { useState } from "react";
 import { label } from "framer-motion/m";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card";
+import { Helmet } from "react-helmet";
 
 const optionsIdentification = {
     value: [
@@ -110,6 +111,9 @@ export const CreatePage = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Create | Data Management</title>
+            </Helmet>
             <ScrollArea className="w-full xl:h-max" type="auto">
                 <form onSubmit={handleSubmit}>
                     <main className="gap-4 mt-8 md:gap-6 xl:container">
@@ -139,7 +143,7 @@ export const CreatePage = () => {
                                                                 <div className="p-4">
                                                                     <DropZoneAvatar
                                                                         nameZone="avatar"
-                                                                        label="Upload Avatar"                           
+                                                                        label="Upload Avatar"
                                                                         onChange={(files) => {
                                                                             if (files.length > 0) {
                                                                                 handleInputChange("photo", files[0].preview); // Guardar la imagen en Base64
@@ -152,12 +156,12 @@ export const CreatePage = () => {
                                                     </div>
                                                 </CardContent>
                                                 <CardFooter
-                                                        className="flex flex-col items-center justify-center "
-                                                    >
-                                                        <p className="text-center mt-4 text-sm text-base-content/50">
-                                                            Click the avatar or drop a image to update the user's photo.
-                                                        </p>
-                                                    </CardFooter>
+                                                    className="flex flex-col items-center justify-center "
+                                                >
+                                                    <p className="text-center mt-4 text-sm text-base-content/50">
+                                                        Click the avatar or drop a image to update the user's photo.
+                                                    </p>
+                                                </CardFooter>
                                             </Card>
                                         </div>
                                         <div className="grid auto-rows-min gap-4 lg:col-span-2 lg:gap-6">

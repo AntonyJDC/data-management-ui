@@ -9,6 +9,7 @@ import { IoCreateSharp } from "react-icons/io5";
 import { toast } from "sonner";
 import axios from "axios";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "../components/ui/card";
+import { Helmet } from "react-helmet";
 
 let id: string;
 
@@ -148,7 +149,9 @@ export const UpdatePage = () => {
     
     return (
         <>
-
+            <Helmet>
+                <title>Update | Data Management</title>
+            </Helmet>
             <ScrollArea className="w-full xl:h-max" type="auto">
                 <form onSubmit={handleSubmit}>
                     <main className="gap-4 mt-8 md:gap-6 xl:container">

@@ -8,6 +8,7 @@ import { ScrollArea } from "../components/ui/scroll-area";
 import { toast } from 'sonner';
 import axios from "axios";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
+import { Helmet } from "react-helmet";
 
 const optionsIdentification = {
     value: [
@@ -93,6 +94,9 @@ export const ReadPage = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Read | Data Management</title>
+            </Helmet>
             <ScrollArea className="w-full xl:h-max" type="auto">
                 <main className="gap-4 mt-8 md:gap-6 xl:container">
                     <div className="grid flex-1 gap-4">

@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { IoMdPerson } from "react-icons/io";
 import { ScrollArea } from '../components/ui/scroll-area';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 interface CRUDCardProps {
   href: string;
@@ -44,15 +45,18 @@ const CRUDCard: React.FC<CRUDCardProps> = ({ href, icon: Icon, title, descriptio
 export const HomePage = () => {
   return (
     <>
+      <Helmet>
+        <title>Home | Data Management</title>
+      </Helmet>
       <ScrollArea className="w-full" type="auto">
         <div className="flex items-center justify-center p-8">
           <div className="w-full max-w-7xl">
             <div className="mb-12 sm:mt-12">
               <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold flex tracking-tight">
-                <IoMdPerson className='mr-4'/> Welcome to data management!
+                <IoMdPerson className='mr-4' /> Welcome to data management!
               </h1>
               <p className="mt-4 text-md sm:text-lg text-base-content/70">
-              Easily manage your database with a simple and intuitive interface. Navigate through the options to create, view, update, or delete user information seamlessly. This platform ensures efficient data handling for all your management needs.
+                Easily manage your database with a simple and intuitive interface. Navigate through the options to create, view, update, or delete user information seamlessly. This platform ensures efficient data handling for all your management needs.
               </p>
               <p className="mt-8 sm:mt-16 text-md sm:text-lg text-base-content/70">
                 Select an operation to perform on the database records below or use the navigation bar to access other sections.
