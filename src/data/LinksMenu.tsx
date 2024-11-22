@@ -3,7 +3,8 @@ import {
   IoAddCircleSharp,
   IoBackspaceSharp,
   IoSearchSharp,
-  IoHomeSharp 
+  IoHomeSharp, 
+  IoClipboardSharp
  } from "react-icons/io5";
 
 import { ReactNode } from 'react';
@@ -59,23 +60,13 @@ export const linksMenu: LinkItem[] = [
     to: '/delete',
     notification: 0,
     gap: false,
+  },
+  {
+    key: 'logs',
+    label: 'Logs',
+    icon: <IoClipboardSharp />,
+    to: '/logs',
+    notification: 0,
+    gap: false,
   }
 ];
-
-/* {
-  path: 'contacts',
-  errorElement: <ErrorPage />,
-  children: [
-    {
-      path: 'clients',
-      element: <ClientsPage />,
-      errorElement: <ErrorPage />,
-    },
-    {
-      path: 'suppliers',
-      element: <SuppliersPage />,
-      errorElement: <ErrorPage />,
-    },
-  ],
-},
- */
