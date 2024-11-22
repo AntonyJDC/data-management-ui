@@ -1,4 +1,4 @@
-import { Button } from '@/presentation/components/ui/button';
+import { Button } from '../../../components/ui/button';
 import { Column } from '@tanstack/react-table';
 import {
   ArrowDownIcon,

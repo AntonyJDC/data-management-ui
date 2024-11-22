@@ -29,13 +29,13 @@ const genderOptions = {
 
 export const CreatePage = () => {
     const [userData, setUserData] = useState({
-        idType: { label: "Select an identification type", value: "select" },
+        idType: optionsIdentification.value[0],
         idNumber: "",
         firstName: "",
         middleName: "",
         lastName: "",
         birthDate: "",
-        gender: { label: "Select a gender", value: "select" },
+        gender: genderOptions.value[0],
         email: "",
         phone: "",
         photo: "",

@@ -4,7 +4,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/presentation/components/ui/dropdown-menu';
+} from '../../../components/ui/dropdown-menu';
 import { MdMoreVert } from 'react-icons/md';
 import { FaClone, FaEdit, FaTrashAlt } from 'react-icons/fa';
 
